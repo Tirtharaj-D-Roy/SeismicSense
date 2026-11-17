@@ -1,4 +1,4 @@
-# 🌕 SeismicSense - Planetary Seismic Event Mapper
+# SeismicSense - Planetary Seismic Event Mapper
 
 **CSE473 - LLM & Agentic AI · Group 26**
 
@@ -17,7 +17,7 @@ each result in plain English for people with no seismology background.
 
 ---
 
-## 🚀 How to run (3 steps, ~2 minutes)
+##  How to run (3 steps, ~2 minutes)
 
 **Requirements:** Python 3.10 or newer (tested with Python 3.13, including older library versions: pandas 2.2, scikit-learn 1.5, Streamlit 1.50). Internet is needed only for the first install.
 
@@ -37,7 +37,7 @@ It creates a virtual environment the first time and then launches the app.
 The trained model is already included, so the app starts in about 5 seconds. If the model file ever fails to load
 (e.g. a very different scikit-learn version), the app automatically retrains it (~1 minute) - nothing to do by hand.
 
-### 🧠 Connecting the LLM (pick ONE)
+### Connecting the LLM (pick ONE)
 
 | Option | Cost | How |
 |---|---|---|
@@ -53,49 +53,49 @@ The trained model is already included, so the app starts in about 5 seconds. If 
 
 ---
 
-## 🎓 2-minute demo script (for the evaluator)
+## 2-minute demo script (for the evaluator)
 
-1. **🏠 Start here** - the four kinds of "moonquakes" in plain English and the agent team.
-2. **🔍 Investigate an event** → choose *🎲 Surprise me* → **🚀 Run the agent team**.
+1. ** Start here** - the four kinds of "moonquakes" in plain English and the agent team.
+2. ** Investigate an event** → choose * Surprise me* → ** Run the agent team**.
    Watch 6 agents work live, then see the verdict, the LLM's explanation, the probabilities, whether it matches
-   NASA scientists' label, and where on the Moon it happened. Try *🕵️ Mystery* to classify an event NASA never labelled,
-   or *🚀 Apollo crashes* to see the Mission Historian override the ML model.
-3. **🌕 Moon map** - drag to spin the 3D Moon; switch on **🩻 X-ray view** to see deep moonquakes ~900 km inside the Moon.
-4. **📅 Timeline & tides** - 8 years of activity, plus the *tidal heartbeat*: deep moonquakes follow Earth's 27.55-day pull.
-   Press **🧠 Write briefing** for an LLM-written "Moon news" summary of any year.
-5. **💬 Ask Mission Control** - ask anything, e.g. *"What were the 5 strongest meteoroid impacts?"*.
-   Open **🔧 Tools the agent used** to see the LLM's tool calls.
-6. **📊 Report card** - accuracy, F1, confusion matrix and **▶️ Run live evaluation** of the LLM Seismologist.
+   NASA scientists' label, and where on the Moon it happened. Try * Mystery* to classify an event NASA never labelled,
+   or * Apollo crashes* to see the Mission Historian override the ML model.
+3. ** Moon map** - drag to spin the 3D Moon; switch on ** X-ray view** to see deep moonquakes ~900 km inside the Moon.
+4. ** Timeline & tides** - 8 years of activity, plus the *tidal heartbeat*: deep moonquakes follow Earth's 27.55-day pull.
+   Press ** Write briefing** for an LLM-written "Moon news" summary of any year.
+5. ** Ask Mission Control** - ask anything, e.g. *"What were the 5 strongest meteoroid impacts?"*.
+   Open ** Tools the agent used** to see the LLM's tool calls.
+6. ** Report card** - accuracy, F1, confusion matrix and ** Run live evaluation** of the LLM Seismologist.
 
 ![Agents at work](docs/2_agents.jpg)
 
 ---
 
-## 🤖 How the agentic AI works
+##  How the agentic AI works
 
 ```
                                ┌──────────────────────────────────────────────┐
-  Your question  ──────────►   │  💬 MISSION CONTROL  (LLM, tool-calling)     │
+  Your question  ──────────►   │   MISSION CONTROL  (LLM, tool-calling)     │
                                │  plans → calls tools → reads results → answers│
                                └──────┬───────────┬───────────┬────────────────┘
                                       │           │           │
        catalog_stats / find_events  analyze_event  show_moon_map / show_timeline / show_tidal_pattern / model_report
 
   Classification council (runs for every event you inspect):
-  🛰️ Data Scout ─► 📜 Mission Historian ─► 📈 Signal Analyst ─► 🤖 Pattern Classifier ─► 🧑‍🔬 Seismologist ─► 🗺️ Cartographer
+   Data Scout ─►  Mission Historian ─►  Signal Analyst ─►  Pattern Classifier ─►  Seismologist ─►  Cartographer
      (tool)          (mission records)        (physics/stats)       (ML model)             (LLM)               (3D map)
 ```
 
 | Agent | Role | Powered by |
 |---|---|---|
-| 🛰️ **Data Scout** | Retrieves the raw record from the NASA catalog | Tool |
-| 📜 **Mission Historian** | Checks Apollo mission records: was a rocket stage / lunar module crashed at that minute? | Tool |
-| 📈 **Signal Analyst** | Converts numbers into evidence: strength vs. all events, duration, which stations felt it, Earth-Moon distance, and whether the same "fingerprint" repeated 1-3 lunar months earlier/later | Tool |
-| 🤖 **Pattern Classifier** | Gradient-boosted trees trained on 7,336 NASA-labelled events → probabilities | scikit-learn |
-| 🧑‍🔬 **Seismologist** | Receives *all* evidence + ML probabilities, reasons with domain knowledge, gives verdict, confidence, 3 evidence-based reasons, a plain-English story and a caveat (structured JSON) | **LLM** |
-| 🗺️ **Cartographer** | Pins the published source location or shows how strongly each station felt it | Tool |
-| 💬 **Mission Control** | Conversational agent: decides which of 7 tools to call (multi-step, up to 6 rounds), combines results, answers and shows charts | **LLM with function calling** |
-| 📰 **Storyteller** | Writes the yearly "Moon news" briefing from computed statistics | **LLM** |
+|  **Data Scout** | Retrieves the raw record from the NASA catalog | Tool |
+|  **Mission Historian** | Checks Apollo mission records: was a rocket stage / lunar module crashed at that minute? | Tool |
+|  **Signal Analyst** | Converts numbers into evidence: strength vs. all events, duration, which stations felt it, Earth-Moon distance, and whether the same "fingerprint" repeated 1-3 lunar months earlier/later | Tool |
+|  **Pattern Classifier** | Gradient-boosted trees trained on 7,336 NASA-labelled events → probabilities | scikit-learn |
+|  **Seismologist** | Receives *all* evidence + ML probabilities, reasons with domain knowledge, gives verdict, confidence, 3 evidence-based reasons, a plain-English story and a caveat (structured JSON) | **LLM** |
+|  **Cartographer** | Pins the published source location or shows how strongly each station felt it | Tool |
+|  **Mission Control** | Conversational agent: decides which of 7 tools to call (multi-step, up to 6 rounds), combines results, answers and shows charts | **LLM with function calling** |
+|  **Storyteller** | Writes the yearly "Moon news" briefing from computed statistics | **LLM** |
 
 **Why not let the LLM classify on its own?** LLMs are poor at precise numeric pattern recognition over thousands of
 examples. The agentic design gives each part the job it is good at: the ML model does the pattern matching
@@ -109,7 +109,7 @@ on Groq, Gemini, Ollama, OpenAI, LM Studio, etc.
 
 ---
 
-## 📊 Results
+##  Results
 
 Evaluated on **1,834 events never seen during training** (stratified random 20% hold-out of NASA's labelled
 natural events) plus 5-fold cross-validation on the training set (`python train.py` reproduces everything).
@@ -125,10 +125,10 @@ natural events) plus 5-fold cross-validation on the training set (`python train.
 
 | Event type | Test events | Precision | Recall | F1 |
 |---|---|---|---|---|
-| 🌑 Deep moonquake | 1,480 | 0.931 | 0.954 | 0.943 |
-| ☄️ Meteoroid impact | 348 | 0.773 | 0.695 | 0.732 |
-| ⚡ Shallow moonquake | 6 | 0.200 | 0.167 | 0.182 |
-| 🚀 Artificial impact (Mission Historian) | 9 | 1.000 | 1.000 | 1.000 |
+|  Deep moonquake | 1,480 | 0.931 | 0.954 | 0.943 |
+|  Meteoroid impact | 348 | 0.773 | 0.695 | 0.732 |
+|  Shallow moonquake | 6 | 0.200 | 0.167 | 0.182 |
+|  Artificial impact (Mission Historian) | 9 | 1.000 | 1.000 | 1.000 |
 
 **Notes:**
 - Only 28 shallow moonquakes exist in the entire 8-year record (6 in the test set). In catalog numbers they look like
@@ -145,7 +145,7 @@ natural events) plus 5-fold cross-validation on the training set (`python train.
 
 ---
 
-## 📁 Dataset
+##  Dataset
 
 All data comes from the **NASA Planetary Data System (PDS) Geosciences Node - Apollo Seismic Event Catalog**:
 https://pds-geosciences.wustl.edu/missions/apollo/seismic_event_catalog.htm
@@ -166,7 +166,7 @@ Event type codes (column `T2`) were decoded and verified against the official co
 
 ---
 
-## 🗂️ Project structure
+##  Project structure
 
 ```
 CSE473_26_12323508_12313177/
@@ -197,7 +197,7 @@ python evaluate_agents.py --provider groq --n 30  # LLM Seismologist vs classifi
 
 ---
 
-## 📚 References
+##  References
 
 - Nakamura, Y. et al. (1981, updated 2008). *Passive Seismic Experiment Long-Period Event Catalog.* UTIG Tech. Rep. 18.
 - Weber, R. C. (2020). *PDART: Apollo Passive Seismic Experiment Expanded Event Catalog.* NASA PDS.
