@@ -1,0 +1,73 @@
+{
+  "dataset": "NASA PDS Apollo Seismic Event Catalog (levent.1008weber, Nakamura et al.)",
+  "n_events_total": 13057,
+  "n_train": 7336,
+  "n_test": 1834,
+  "classes": [
+    "deep",
+    "meteoroid",
+    "shallow"
+  ],
+  "test_accuracy": 0.9023991275899673,
+  "test_f1_weighted": 0.9001844085243308,
+  "test_f1_macro": 0.6188774017184667,
+  "test_precision_weighted": 0.898980566994266,
+  "test_recall_weighted": 0.9023991275899673,
+  "cv5_f1_weighted_mean": 0.8968979684615611,
+  "cv5_f1_weighted_std": 0.008078846808274231,
+  "per_class": {
+    "deep": {
+      "precision": 0.9313984168865436,
+      "recall": 0.9540540540540541,
+      "f1-score": 0.9425901201602136,
+      "support": 1480.0
+    },
+    "meteoroid": {
+      "precision": 0.7731629392971247,
+      "recall": 0.6954022988505747,
+      "f1-score": 0.7322239031770046,
+      "support": 348.0
+    },
+    "shallow": {
+      "precision": 0.2,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.18181818181818182,
+      "support": 6.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      1412,
+      68,
+      0
+    ],
+    [
+      102,
+      242,
+      4
+    ],
+    [
+      2,
+      3,
+      1
+    ]
+  ],
+  "pipeline_4class": {
+    "accuracy": 0.9028757460661965,
+    "f1_weighted": 0.9006718422320253,
+    "artificial_found": 9,
+    "artificial_total": 9
+  },
+  "feature_group_importance": {
+    "How long the shaking lasted": 0.432,
+    "Repeating 'fingerprint' (same source firing again)": 0.1993,
+    "Which sensors picked it up": 0.1745,
+    "Shaking strength at each station": 0.1229,
+    "Strength pattern between stations": 0.0343,
+    "Signal quality grade": 0.0254,
+    "Time of day / season": 0.0115,
+    "How busy the Moon was that day": 0.0,
+    "Tidal timing (Earth's pull on the Moon)": 0.0
+  },
+  "train_seconds": 63.4
+}
